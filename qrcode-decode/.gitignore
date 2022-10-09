@@ -1,0 +1,9 @@
+qrcode-decode
+*.jpg
+*.jpeg
+*.png
+
+.idea
+.vscode
+
+go.sum

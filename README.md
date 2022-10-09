@@ -56,4 +56,8 @@ Test-Driven development
 
 - go-app-example
 
-pwa
+build pwa program
+
+- qrcode-decode
+
+decode qr img
