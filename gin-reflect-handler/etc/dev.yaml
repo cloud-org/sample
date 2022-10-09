@@ -1,0 +1,7 @@
+Name: gin-reflect-handler
+Mode: dev
+Host: 0.0.0.0
+Port: 9096
+
+Debug: true
+
