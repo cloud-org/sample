@@ -61,3 +61,7 @@ build pwa program
 - qrcode-decode
 
 decode qr img
+
+- simple-http-server
+
+check post body
