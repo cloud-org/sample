@@ -23,3 +23,7 @@ demo for kafka-go
 - fc-in-action
 
 serverless
+
+- shellcheck-web-wrapper
+
+web wrapper for shellcheck
