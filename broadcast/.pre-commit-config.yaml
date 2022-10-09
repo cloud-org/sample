@@ -1,0 +1,17 @@
+repos:
+  - repo: git://github.com/dnephin/pre-commit-golang
+    rev: v0.4.0
+    hooks:
+      - id: go-fmt
+      - id: go-imports
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks
+    rev: v1.1.10
+    hooks:
+      -   id: insert-license
+          files: \.go$
+          args:
+            - --license-filepath
+            - LICENSE
+            - --comment-style
+            - /*| *| */
