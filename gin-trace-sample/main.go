@@ -2,8 +2,10 @@ package main
 
 import (
 	"gin-trace-sample/middleware"
+	"gin-trace-sample/slstrace"
 	"gin-trace-sample/trace"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -14,6 +16,7 @@ func main() {
 		Sampler:  1.0,
 		Batcher:  "jaeger",
 	})
+	//initSlsTrace() // use aliyun sls trace
 	//gin.SetMode(gin.ReleaseMode)
 	engine := gin.New()
 	engine.Use(middleware.TracingHandler("main"))
@@ -22,4 +25,20 @@ func main() {
 		return
 	})
 	engine.Run("0.0.0.0:9091")
+}
+
+func initSlsTrace() {
+	_, err := slstrace.TraceInit(&slstrace.TraceConfig{
+		ServiceName:           "slstrace-main",
+		ServiceVersion:        "v0.0.1-test",
+		TraceExporterEndpoint: "",
+		Project:               "",
+		InstanceID:            "",
+		AccessKeyID:           "",
+		AccessKeySecret:       "",
+	})
+	if err != nil {
+		log.Printf("sls trace init err: %v", err)
+		return
+	}
 }
