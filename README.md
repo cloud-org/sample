@@ -1,3 +1,11 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [sample](#sample)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ### sample
 
 - go-git-gitlab-sample
@@ -75,3 +83,7 @@ check post body
 web framework like gin
 
 - short me
+
+- gin-trace-sample
+
+gin 接入 jaeger 和 阿里云 slstrace 的 demo(不依赖 go-zero)
