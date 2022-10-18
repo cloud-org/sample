@@ -7,7 +7,6 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 	semconv "go.opentelemetry.io/otel/semconv/v1.4.0"
 	oteltrace "go.opentelemetry.io/otel/trace"
-	"log"
 )
 
 // TracingHandler return a middleware that process the opentelemetry.
@@ -27,12 +26,9 @@ func TracingHandler(serviceName string) gin.HandlerFunc {
 				serviceName, spanName, ginCtx.Request)...),
 		)
 		defer span.End()
-		log.Println(span.SpanContext().IsValid(), span.SpanContext().SpanID(), span.SpanContext().TraceID())
-		//log.Println("traceId, ", traceId)
-		//ginCtx.Header("traceId", traceId)
+		//log.Println(span.SpanContext().IsValid(), span.SpanContext().SpanID(), span.SpanContext().TraceID())
 
 		// convenient for tracking error messages 注入返回 response key: Traceparent
-		// todo: 这里不知道为何注入失败
 		propagator.Inject(spanCtx, propagation.HeaderCarrier(ginCtx.Writer.Header()))
 
 		// 注入 context

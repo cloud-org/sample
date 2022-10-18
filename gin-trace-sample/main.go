@@ -21,5 +21,5 @@ func main() {
 		ctx.JSON(http.StatusOK, gin.H{"msg": "hello world"})
 		return
 	})
-	engine.Run("127.0.0.1:9091")
+	engine.Run("0.0.0.0:9091")
 }

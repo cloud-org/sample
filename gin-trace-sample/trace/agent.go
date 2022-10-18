@@ -3,6 +3,7 @@ package trace
 import (
 	"context"
 	"fmt"
+	"go.opentelemetry.io/otel/propagation"
 	"log"
 	"sync"
 
@@ -49,6 +50,9 @@ func StartAgent(c Config) {
 
 // StopAgent shuts down the span processors in the order they were registered.
 func StopAgent() {
+	if tp == nil {
+		return
+	}
 	_ = tp.Shutdown(context.Background())
 }
 
@@ -95,5 +99,13 @@ func startAgent(c Config) error {
 		log.Printf("[otel] error: %v", err)
 	}))
 
+	log.Println("init trace done")
+
 	return nil
+}
+
+func init() {
+	// 不加这一段 resp.header 调用 inject func 无法加入 traceparent
+	otel.SetTextMapPropagator(propagation.NewCompositeTextMapPropagator(
+		propagation.TraceContext{}, propagation.Baggage{}))
 }
